@@ -3,6 +3,7 @@ namespace Automattic\Wistia;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\RequestOptions;
 
 class Client {
     use Traits\ApiMethodsTrait;
@@ -199,20 +200,26 @@ class Client {
      * @codeCoverageIgnore
      */
     private function _make_request( $type, $endpoint, $query = [] ) {
-        $params = [
-            'headers' => [
-                'Authorization' => 'Basic ' . base64_encode( 'api:' . $this->_token ),
+        $uri = $endpoint . '.' . $this->format;
+        $options = [
+            RequestOptions::HEADERS => [
+                'Authorization' => 'Basic ' . base64_encode('api:' . $this->_token),
                 'Accept'        => 'application/' . $this->format,
                 'User-Agent'    => 'Wistia PHP Wrapper/' . self::VERSION
             ],
         ];
 
-        if ( ! empty( $query ) && empty( $params['query'] ) ) {
-            $params['query'] = $query;
+        if (isset($query['json'])) {
+            $options[RequestOptions::JSON] = $query['json'];
+            unset($query['json']);
+        }
+
+        if (!empty($query)) {
+            $options[RequestOptions::QUERY] = $query;
         }
 
         try {
-            $response                 = $this->client->request( $type, $endpoint . '.' . $this->format, $params );
+            $response = $this->client->request($type, $uri, $options);
             $this->last_response_code = $response->getStatusCode();
 
             return json_decode( $response->getBody()->getContents() );

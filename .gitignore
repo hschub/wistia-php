@@ -5,5 +5,3 @@ composer.lock
 vagrant
 vendor
 config.php
-
-.phpunit.result.cache
