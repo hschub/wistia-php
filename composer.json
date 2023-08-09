@@ -1,40 +1,46 @@
 {
-    "name": "automattic/wistia-php",
-    "description": "PHP wrapper for Wistia API",
-    "keywords": ["wistia","php","client","wrapper","video"],
-    "homepage": "http://github.com/Automattic/wistia-php",
-    "license": "GPLv2",
-    "authors": [
-        {
-            "name": "Automattic",
-            "email": "info@automattic.com",
-            "homepage": "https://automattic.com"
-        },
-        {
-            "name": "Nicola Mustone",
-            "email": "nicola@automattic.com",
-            "homepage": "https://nicola.blog",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "guzzlehttp/guzzle": "^6.1"
+  "name": "hschub/wistia-php",
+  "description": "PHP wrapper for Wistia API",
+  "keywords": [
+    "wistia",
+    "php",
+    "client",
+    "wrapper",
+    "video"
+  ],
+  "homepage": "http://github.com/hschub/wistia-php",
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "Automattic",
+      "email": "info@automattic.com",
+      "homepage": "https://automattic.com"
     },
-    "require-dev": {
-        "phpunit/phpunit": "4.8.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Automattic\\Wistia\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Automattic\\Wistia\\Tests\\": "tests/"
-        },
-        "classmap": [
-            "src/",
-            "tests/"
-        ]
+    {
+      "name": "Nicola Mustone",
+      "email": "nicola@automattic.com",
+      "homepage": "https://nicola.blog",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "guzzlehttp/guzzle": "^7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Automattic\\Wistia\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Automattic\\Wistia\\Tests\\": "tests/"
+    },
+    "classmap": [
+      "src/",
+      "tests/"
+    ]
+  }
 }
